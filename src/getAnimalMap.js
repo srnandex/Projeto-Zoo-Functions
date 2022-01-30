@@ -48,7 +48,7 @@ const incluTruGeral = (cal, boll) => {
   return objAniIncludTru;
 };
 
-const test = (os, sel) => {
+const filAniNameSex = (os, sel) => {
   const a = [];
   os.residents.forEach((it) => {
     if (it.sex === sel) {
@@ -64,7 +64,7 @@ const incluTruSex = (cal, boll, se) => {
     const namesAni = [];
     objAniTru(element).forEach((obj) => {
       const an = {};
-      const na = test(obj, se);
+      const na = filAniNameSex(obj, se);
       if (boll === true) {
         an[obj.name] = na.sort();
       } else {
