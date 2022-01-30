@@ -21,5 +21,4 @@ function calculateEntry(entrants) {
   const valorSenior = numberVisit.senior * 24.99;
   return valorAdult + valorChild + valorSenior;
 }
-console.log(calculateEntry({}));
 module.exports = { calculateEntry, countEntrants };
