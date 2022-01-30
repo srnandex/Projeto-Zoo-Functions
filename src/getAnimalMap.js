@@ -57,7 +57,7 @@ const filAniNameSex = (os, sel) => {
   });
   return a;
 };
-// função que pega o nome de todos os animais por sex e ordena
+// função que pega o nome de todos os animais por sex e orden
 const incluTruSex = (cal, boll, se) => {
   const objAniMale = {};
   cal().forEach((element) => {
