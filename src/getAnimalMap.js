@@ -1,4 +1,3 @@
-/* eslint-disable sonarjs/cognitive-complexity */
 const data = require('../data/zoo_data');
 
 // função que filtra as regioes
@@ -24,13 +23,17 @@ const geralAni = (cal) => {
 };
 const todosAni = geralAni(template);
 
+const objAniTru = (element) => {
+  const aniLocc = data.species.filter((neL) => neL.location === element);
+  return aniLocc;
+};
+
 // função que pega o nome de todos os animais e ordena
 const incluTruGeral = (cal, boll) => {
   const objAniIncludTru = {};
   cal().forEach((element) => {
     const namesAni = [];
-    const aniLoc = data.species.filter((neL) => neL.location === element);
-    aniLoc.forEach((el) => {
+    objAniTru(element).forEach((el) => {
       const an = {};
       const na = el.residents.map((it) => it.name);
       if (boll === true) {
@@ -45,20 +48,24 @@ const incluTruGeral = (cal, boll) => {
   return objAniIncludTru;
 };
 
+const test = (os, sel) => {
+  const a = [];
+  os.residents.forEach((it) => {
+    if (it.sex === sel) {
+      a.push(it.name);
+    }
+  });
+  return a;
+};
 // função que pega o nome de todos os animais por sex e ordena
 const incluTruSex = (cal, boll, se) => {
   const objAniMale = {};
   cal().forEach((element) => {
     const namesAni = [];
-    const aniObNe = data.species.filter((neL) => neL.location === element);
-    aniObNe.forEach((obj) => {
+    objAniTru(element).forEach((obj) => {
       const an = {};
-      const na = [];
-      obj.residents.forEach((it) => {
-        if (it.sex === se) {
-          na.push(it.name);
-        }
-      }); if (boll === true) {
+      const na = test(obj, se);
+      if (boll === true) {
         an[obj.name] = na.sort();
       } else {
         an[obj.name] = na;
